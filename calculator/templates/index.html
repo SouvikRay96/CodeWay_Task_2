@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
+    <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- <div class="displaywrapper"> -->
+        <!-- </div> -->
+        <div class="display-box">
+            <div class="input-box">
+                <input type="text" id="user" class="input-field" value="{{result}}" autocomplete="off">
+
+                <label for="user" class="label" style="color: black;">Result
+                </label></div>
+        </div>
+        <div class="wrapper">
+            <div class="login-box">
+                <div class="login-header">
+                    
+                    <span>Cal C</span>
+            </div>
+            <form action="{% url 'calculate' %}" method="post">
+                {% csrf_token %}
+                <div class="input-box">
+                    <input type="text" id="number" class="input-field number1" autocomplete="off" name="num1" value="{{num1}}" required>
+
+                    <label for="user" class="label" style="color: black;">Enter First Number
+                    </label>
+                   
+                </div>
+                <br>
+                <div class="input-box">
+                    <input type="text" id="number" class="input-field number2" autocomplete="off" name="num2" value="{{num2}}" required>
+                    <label for="pass" class="label" style="color: black;">Enter Second Number</label>
+                    
+                </div>
+                <!-- Operator Choosing-->
+                <br>
+                <div class="input-box">
+                    <select class="input-field" autocomplete="off" name="operator" value="{{opcode}}" required >
+                        <option value="none" style="color: black;">--Select Operator--</option>
+                        <option value="+" style="color: black;">+</option>
+                        <option value="-" style="color: black;">-</option>
+                        <option value="*" style="color: black;">*</option>
+                        <option value="/" style="color: black;">/</option>
+                        <option value="^" style="color: black;">^</option>
+                    </select>
+                    <label for="pass" class="label" style="color: black;">Enter Operator</label>
+                   
+                </div>
+
+                
+
+                <div class="input-box">
+                    <input type="submit" class="input-submit" value="Submit">
+                </div>
+                <div class="input-box">
+                    <a href="{% url 'reset' %}" style="color: black;"><button class="input-submit resetbtn">Reset</a>
+                </div>
+                
+            </form>
+        </div>
+
+    </div>
+
+
+    
+</body>
+
+</html>
